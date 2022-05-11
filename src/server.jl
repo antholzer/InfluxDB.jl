@@ -55,7 +55,7 @@ function query(server::InfluxServer, query_data::Dict; type::Symbol = :get)
     end
     response_data = String(response.body)
     if response.status != 200
-        error(response_data)
+        error("HTTP request not succesful. Maybe Problem with InfluxDB Server.\n" * response_data)
     end
 
     # Grab JSON data
